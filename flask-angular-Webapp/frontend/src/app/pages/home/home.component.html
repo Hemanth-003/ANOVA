@@ -1,0 +1,77 @@
+
+<div fxLayoutAlign="center center" fxLayout="column">
+    <h1>Disaster Classification</h1>
+
+    <div class="home__training">
+        <h3>Naive Bayes Classifier Model</h3>
+        <md-card fxLayoutAlign="center center" fxLayout="column">
+            <h4>Random State Parameter</h4>
+            <md-input-container>
+                <input
+                    mdInput
+                    name="C Parameter"
+                    placeholder="C Parameter"
+                    [(ngModel)]="svcParameters.C">
+            </md-input-container>
+            <button md-raised-button (click)="trainModel()">
+                Train model
+            </button>
+        </md-card>
+
+        <div *ngIf="svcResult"
+             fxLayoutAlign="center center"
+             fxLayout="column">
+            <h4>Training Accuracy</h4>
+            <ngx-charts-linear-gauge
+                [view]="[300, 100]"
+                [value]="svcResult.accuracy"
+                [scheme]="colorScheme"
+                [min]="0"
+                [max]="100"
+                [units]="'% accuracy'">
+            </ngx-charts-linear-gauge>
+        </div>
+    </div>
+
+    <div class="home__prediction"
+         fxLayoutAlign="center center"
+         fxLayout="column">
+        <h3>Predict The Disaster Class</h3>
+
+        <md-card fxLayoutAlign="center center" fxLayout="column">
+            <h4>Define The Co-ordinates</h4>
+            <div fxLayout="row">
+                <md-input-container>
+                    <input mdInput
+                           name="Latitude"
+                           placeholder="Latitude"
+                           [(ngModel)]="iris.Latitude">
+                </md-input-container>
+                <md-input-container>
+                    <input mdInput
+                           name="Longitude"
+                           placeholder="Longitude"
+                           [(ngModel)]="iris.Longitude">
+                </md-input-container>
+            </div>
+          
+            <div>
+                <button md-raised-button (click)="predictIris()">Predict Probability</button>
+            </div>
+        </md-card>
+             {{place}}
+        <div *ngIf="probabilityPredictions"
+             fxLayoutAlign="center center"
+             fxLayout="column"
+             class="home__chart-container">
+            <h4>Prediction Result</h4>
+            <ngx-charts-pie-chart
+                [results]="probabilityPredictions"
+                [scheme]="colorScheme"
+                [labels]="true"
+                [legend]="true">
+            </ngx-charts-pie-chart>
+        </div>
+    </div>
+</div>
+
