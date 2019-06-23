@@ -1,4 +1,0 @@
-1 - Anova_Working_Model.MP4 - Video demonstrating the usage of the Rapidminer tool for predection
-2 - database.csv - Dataset for Earthquake for the last 100+ years
-3 - project_techgig_naive_bayes.psy - Code used to confirm predection used vua Raidminer Tool
-4 - Team ANOVA - Techgig_2019.pptx - Overall Ideation Presentation
